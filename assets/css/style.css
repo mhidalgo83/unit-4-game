@@ -1,0 +1,39 @@
+body{
+    font-size: 30px;
+    margin: 10px;
+}
+
+img {
+    height: 100px;
+    width: 100px;
+    display: inline;
+}
+
+#random-number{
+    background-color: rgb(44, 70, 143);
+    height: 75px;
+    width: 200px;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 25px;
+}
+
+#scores {
+    background-color: rgb(44, 70, 143);
+    height: 100px;
+    width: 200px;
+    padding-top: 25px;
+    color: white;
+}
+
+#game-score {
+    background-color: rgb(44, 70, 143);
+    height: 75px;
+    width: 200px;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 25px;
+}
+
