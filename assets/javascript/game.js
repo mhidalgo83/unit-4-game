@@ -11,6 +11,7 @@ $(document).ready(function () {
 
     var crystalFour = randomNumberFromRange(1, 12);
 
+    // Logging wins and losses...
     var wins = 0;
     $("#wins").html("Wins: " + wins);
 
@@ -19,7 +20,6 @@ $(document).ready(function () {
 
     // Crystal total... 
     var crystalTotal = 0;
-    var gameScore = crystalTotal;
 
     // Random number generator
     function randomNumberFromRange(minNumber, maxNumber) {
@@ -28,58 +28,75 @@ $(document).ready(function () {
 
     // Starting the game...
     function gameStart() {
-        $("#outcome").html("");
         crystalTotal = 0;
-        randomNumber = $("#random-number").html(randomNumberFromRange(19, 120));
-        parseInt(randomNumber);
+        randomNumber = randomNumberFromRange(19, 120);
+        $("#random-number").html(randomNumber);
+        crystalOne = randomNumberFromRange(1, 12);
+        crystalTwo = randomNumberFromRange(1, 12);
+        crystalThree = randomNumberFromRange(1, 12);
+        crystalFour = randomNumberFromRange(1, 12);
     };
 
-    document.onkeyup = function (event) {
-        gameStart();
+    // Checking the game state...
+    function gameState() {
+        console.log("total " + crystalTotal);
+        console.log("random number: " + randomNumber);
+        if (crystalTotal == randomNumber) {
+            wins++;
+            $("#wins").html("Wins: " + wins);
+            gameStart();
+        }
+
+        else if (crystalTotal > randomNumber) {
+            losses++;
+            $("#losses").html("Losses: " + losses);
+            gameStart();
+        }
+    };
+        gameStart() 
         // Crystal buttons...
         $("#crystal-1").click(function () {
             crystalOne = parseInt(crystalOne);
             crystalTotal = parseInt(crystalTotal);
             crystalTotal = crystalOne + crystalTotal;
             $("#game-score").html(crystalTotal);
+            gameState();
             console.log(crystalOne);
+            $("#outcome").html("");
         });
         $("#crystal-2").click(function () {
             crystalTwo = parseInt(crystalTwo);
             crystalTotal = parseInt(crystalTotal);
             crystalTotal = crystalTwo + crystalTotal;
             $("#game-score").html(crystalTotal);
+            gameState();
             console.log(crystalTwo);
+            $("#outcome").html("");
         });
         $("#crystal-3").click(function () {
             crystalThree = parseInt(crystalThree);
             crystalTotal = parseInt(crystalTotal);
             crystalTotal = crystalThree + crystalTotal;
             $("#game-score").html(crystalTotal);
+            gameState();
             console.log(crystalThree);
+            $("#outcome").html("");
         });
         $("#crystal-4").click(function () {
             crystalFour = parseInt(crystalFour);
             crystalTotal = parseInt(crystalTotal);
             crystalTotal = crystalFour + crystalTotal;
             $("#game-score").html(crystalTotal);
+            gameState();
             console.log(crystalFour);
+            $("#outcome").html("");
         });
-        // Checking the game state...
-        if (crystalTotal == randomNumber) {
-            $("#outcome").html("You have won! Press any key to play again!");
-            wins++;
-            $("#wins").html("Wins: " + wins);
-            gameStart();
-        }
-        else if (crystalTotal > randomNumber) {
-            $("#outcome").html("You have lost! Press any key to play again!");
-            losses++;
-            $("#losses").html("Losses: " + losses);
-            gameStart();
-        };
-
-    };
-
 });
 
+
+/* Things to complete...
+    1)If/else if statements aren't checking the game state. Is this due to scope?
+    2)Crystal buttons are retaining the same value they had at the beginning of the game. How do I change this?
+    3)CSS styling needs to be finished.
+    4)Resetting the game.
+     */

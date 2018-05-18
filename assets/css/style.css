@@ -1,6 +1,8 @@
 body{
     font-size: 30px;
     margin: 10px;
+    font-family: 'Skranji', cursive;
+    color: white;
 }
 button {
     float: left;
